@@ -1,7 +1,5 @@
 import unittest
 import sys
-from os import name
-
 
 def factorial(n: int):
     if n < 0:
@@ -58,5 +56,5 @@ class TestFactorial(unittest.TestCase):
         with self.assertRaises(ValueError):
             factorial(100)
 
-if name == 'main':
+if __name__ == '__main__':
     unittest.main()
