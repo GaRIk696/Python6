@@ -1,5 +1,7 @@
 import unittest
 import sys
+from os import name
+
 
 def factorial(n: int):
     if n < 0:
