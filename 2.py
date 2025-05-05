@@ -1,47 +1,27 @@
-# Тестирование корректности работы со строками
-
-def is_palindrome(s: str) -> bool:
-    left, right = 0, len(s) - 1
-    while left < right:
-        while left < right and not s[left].isalnum():
-            left += 1
-        while left < right and not s[right].isalnum():
-            right -= 1
-        if s[left].lower() != s[right].lower():
-            return False
-        left += 1
-        right -= 1
-    return True
+def is_palin(s: str) -> bool:
+    if not isinstance(s, str):
+        raise ValueError("Входные данные должны быть строкой")
+    cleaned = ''.join(filter(str.isalnum, s.lower()))
+    return cleaned == cleaned[::-1]
 
 def test():
-    assert is_palindrome(" ") == True
+    assert is_palin("") == True
+    assert is_palin("э") == True
+    assert is_palin("11") == True
+    assert is_palin("Лёша на полке клопа нашёл") == True
+    assert is_palin("А роза упала на лапу Азора") == True
+    assert is_palin("Я иду с мечем судия") == True
+    assert is_palin("Madam, I'm Adam") == True
 
-    assert is_palindrome("казак") == True
-    assert is_palindrome("Peep") == True
-    assert is_palindrome("Do geese see God") == True
-    assert is_palindrome("Pull up if I pull up") == True
-    assert is_palindrome("Лидер бодро, гордо бредил") == True
-    assert is_palindrome("Не палиндром") == False
+    assert is_palin("мама мыла раму") == False
+    assert is_palin("Python") == False
+    assert is_palin("3245768090-09876") == False
+    assert is_palin("Was it a car or a cat I saw?") == True
+    assert is_palin("No 'x' in Nixon") == True
+    assert is_palin("A1B2B1A") == True
+    assert is_palin("Level") == True
 
-    assert is_palindrome("") == True
-    assert is_palindrome("a") == True
+    print("Пройдено успешно!")
 
-    assert is_palindrome("  ") == True
-
-    assert is_palindrome("Race fast, safe car!") == True
-    assert is_palindrome("12321") == True
-    assert is_palindrome("123321") == True
-    assert is_palindrome("A1B2B1A") == True
-    assert is_palindrome("A1B2C3") == False
-
-    assert is_palindrome("Level") == True
-    assert is_palindrome("LevEL") == True
-    assert is_palindrome("Python") == False
-
-    assert is_palindrome("!!!") == True
-    assert is_palindrome(".,!") == True
-    assert is_palindrome("..a..") == True
-
-    print("Все тесты пройдены успешно!")
 
 test()

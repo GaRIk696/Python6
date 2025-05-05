@@ -7,18 +7,17 @@ def average_num(list_num: list) -> float:
                 return "Bad request"
     return round(sum(list_num) / len(list_num), 2)
 
-def test():
-    assert average_num([1, 2, 3, 4, 5]) == 3.0
-    assert average_num([1, 2, 3]) == 2
-    assert average_num([10, 20, 30, 40]) == 25
-    assert average_num([1.5, 2.5, 3.5]) == 2.5
-    assert average_num([0.1, 0.2, 0.3]) == 0.2
-    assert average_num([1, 2.5, 3]) == 2.17
-    assert average_num(['1', '2', '3']) == 2
-    assert average_num([1, 2.5, "3"]) == 2.17
-    assert average_num(['a', 'b', 'c']) == "Bad request"
-    assert average_num([1, 2, 'xyz']) == "Bad request"
 
-    print("Все тесты пройдены успешно!")
+assert average_num([10, 20, 30]) == 20.0
+assert average_num([1.5, 2.5, 3.5]) == 2.5
+assert average_num([1, 2.5, 3, 4.5]) == 2.75
+assert average_num(['10', '20', '30']) == 20.0
+assert average_num([5, '10', 15.0]) == 10.0
+assert average_num([7]) == 7.0
+assert average_num([-5, 0, 5]) == 0.0
+assert average_num(['a', 'b', 'c']) == "Bad request"
+assert average_num([10, '20', 'x']) == "Bad request"
+assert average_num([1000000, 2000000, 3000000]) == 2000000.0
 
-test()
+
+print("Пройдено успешно!")
